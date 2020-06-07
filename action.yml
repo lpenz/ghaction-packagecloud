@@ -1,0 +1,21 @@
+---
+name: Deploy to packagecloud.io
+description: 'Deploy debian packages to packagecloud.io'
+branding:
+  icon: 'cloud-snow'
+  color: 'orange'
+inputs:
+  user:
+    description: 'packagecloud.io user; defaults to github repository user'
+  repository:
+    description: 'packagecloud.io repository'
+    required: true
+  directory:
+    description: 'cd to this directory; used if defined'
+  files:
+    description: -<
+      .deb files to upload. If not specified, all .deb files under the
+      current directory are uploaded.
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

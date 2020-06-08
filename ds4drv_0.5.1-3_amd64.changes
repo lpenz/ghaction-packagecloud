@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Sat, 04 Jan 2020 12:51:28 +0000
+Source: ds4drv
+Binary: ds4drv
+Architecture: source all
+Version: 0.5.1-3
+Distribution: UNRELEASED
+Urgency: low
+Maintainer: Leandro Lisboa Penz <lpenz@lpenz.org>
+Changed-By: Leandro Lisboa Penz <lpenz@lpenz.org>
+Description:
+ ds4drv     - Sony DualShock 4 userspace driver for Linux
+Changes:
+ ds4drv (0.5.1-3) UNRELEASED; urgency=low
+ .
+   * Migrate to python3
+Checksums-Sha1:
+ 596e7e5319b461ada7c9e392e6f161f86c1601d0 994 ds4drv_0.5.1-3.dsc
+ 66e35cea54417228c80159ae7fa50c90c4c64d8a 2328 ds4drv_0.5.1-3.debian.tar.xz
+ e29ddf687cae83a96ccb23646893e89b2cffc5cf 29040 ds4drv_0.5.1-3_all.deb
+ b5540d8225c799b0c505351589f8e6e3a6fa068b 5599 ds4drv_0.5.1-3_amd64.buildinfo
+Checksums-Sha256:
+ 05a756f45b0b9684b28a5268126d0dde6878a559b84df54f52f5cca6097656c7 994 ds4drv_0.5.1-3.dsc
+ 638406a49d8d3331ff932c174a0c0db29498767f599059c0faaee9d64a0d0354 2328 ds4drv_0.5.1-3.debian.tar.xz
+ 84824fb6d21c7c87d99658c15471f71f911e68475698f1f50b3e658f391c1b34 29040 ds4drv_0.5.1-3_all.deb
+ cce70778139d304526e9c344a2e5564f82280367f39c7c58dc6d893f6cb6e5aa 5599 ds4drv_0.5.1-3_amd64.buildinfo
+Files:
+ c258c0e1338dabe70b7dd96c6d610941 994 python optional ds4drv_0.5.1-3.dsc
+ f0a4047edc98f83b59c05064309293ea 2328 python optional ds4drv_0.5.1-3.debian.tar.xz
+ bf875d8c86c0772c949cf2d89e589e5a 29040 python optional ds4drv_0.5.1-3_all.deb
+ 3763a30cb481c15acdbc922a9417b07b 5599 python optional ds4drv_0.5.1-3_amd64.buildinfo

@@ -1,0 +1,291 @@
+ dpkg-buildpackage -us -uc -ui -i -I
+dpkg-buildpackage: info: source package ds4drv
+dpkg-buildpackage: info: source version 0.5.1-3
+dpkg-buildpackage: info: source distribution UNRELEASED
+dpkg-buildpackage: info: source changed by Leandro Lisboa Penz <lpenz@lpenz.org>
+ dpkg-source -i -I --before-build .
+dpkg-buildpackage: info: host architecture amd64
+dpkg-source: info: using options from debian-ds4drv/debian/source/options: --extend-diff-ignore=^\.travis\.yml$
+ fakeroot debian/rules clean
+dh  clean --with python3 --buildsystem=pybuild
+   dh_auto_clean -O--buildsystem=pybuild
+	pybuild --clean -i python{version} -p 3.8
+I: pybuild base:217: python3.8 setup.py clean 
+running clean
+removing '/home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build' (and everything under it)
+'build/bdist.linux-x86_64' does not exist -- can't clean it
+'build/scripts-3.8' does not exist -- can't clean it
+	rm -rf .pybuild/
+	find . -name \*.pyc -exec rm {} \;
+   dh_autoreconf_clean -O--buildsystem=pybuild
+   dh_clean -O--buildsystem=pybuild
+	rm -f debian/debhelper-build-stamp
+	rm -rf debian/.debhelper/
+	rm -f -- debian/ds4drv.substvars debian/files
+	rm -fr -- debian/ds4drv/ debian/tmp/
+	find .  \( \( \
+		\( -path .\*/.git -o -path .\*/.svn -o -path .\*/.bzr -o -path .\*/.hg -o -path .\*/CVS -o -path .\*/.pc -o -path .\*/_darcs \) -prune -o -type f -a \
+	        \( -name '#*#' -o -name '.*~' -o -name '*~' -o -name DEADJOE \
+		 -o -name '*.orig' -o -name '*.rej' -o -name '*.bak' \
+		 -o -name '.*.orig' -o -name .*.rej -o -name '.SUMS' \
+		 -o -name TAGS -o \( -path '*/.deps/*' -a -name '*.P' \) \
+		\) -exec rm -f {} + \) -o \
+		\( -type d -a -name autom4te.cache -prune -exec rm -rf {} + \) \)
+ dpkg-source -i -I -b .
+dpkg-source: info: using options from debian-ds4drv/debian/source/options: --extend-diff-ignore=^\.travis\.yml$
+dpkg-source: info: using source format '3.0 (quilt)'
+dpkg-source: info: building ds4drv using existing ./ds4drv_0.5.1.orig.tar.gz
+dpkg-source: info: building ds4drv in ds4drv_0.5.1-3.debian.tar.xz
+dpkg-source: info: building ds4drv in ds4drv_0.5.1-3.dsc
+ debian/rules build
+dh  build --with python3 --buildsystem=pybuild
+   dh_update_autotools_config -O--buildsystem=pybuild
+   dh_autoreconf -O--buildsystem=pybuild
+   dh_auto_configure -O--buildsystem=pybuild
+	pybuild --configure -i python{version} -p 3.8
+I: pybuild base:217: python3.8 setup.py config 
+running config
+   dh_auto_build -O--buildsystem=pybuild
+	pybuild --build -i python{version} -p 3.8
+I: pybuild base:217: /usr/bin/python3 setup.py build 
+running build
+running build_py
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv
+copying ds4drv/__init__.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv
+copying ds4drv/__main__.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv
+copying ds4drv/action.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv
+copying ds4drv/backend.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv
+copying ds4drv/config.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv
+copying ds4drv/daemon.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv
+copying ds4drv/device.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv
+copying ds4drv/eventloop.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv
+copying ds4drv/exceptions.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv
+copying ds4drv/logger.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv
+copying ds4drv/uinput.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv
+copying ds4drv/utils.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions
+copying ds4drv/actions/__init__.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions
+copying ds4drv/actions/battery.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions
+copying ds4drv/actions/binding.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions
+copying ds4drv/actions/btsignal.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions
+copying ds4drv/actions/dump.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions
+copying ds4drv/actions/input.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions
+copying ds4drv/actions/led.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions
+copying ds4drv/actions/status.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/backends
+copying ds4drv/backends/__init__.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/backends
+copying ds4drv/backends/bluetooth.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/backends
+copying ds4drv/backends/hidraw.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/backends
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/packages
+copying ds4drv/packages/__init__.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/packages
+copying ds4drv/packages/timerfd.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/packages
+   dh_auto_test -O--buildsystem=pybuild
+	pybuild --test -i python{version} -p 3.8
+I: pybuild base:217: cd /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build; python3.8 -m unittest discover -v 
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.000s
+
+OK
+   create-stamp debian/debhelper-build-stamp
+ fakeroot debian/rules binary
+dh  binary --with python3 --buildsystem=pybuild
+   dh_testroot -O--buildsystem=pybuild
+   dh_prep -O--buildsystem=pybuild
+	rm -f -- debian/ds4drv.substvars
+	rm -fr -- debian/.debhelper/generated/ds4drv/ debian/ds4drv/ debian/tmp/
+   dh_auto_install -O--buildsystem=pybuild
+	install -d /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv
+	pybuild --install -i python{version} -p 3.8 --dest-dir /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv
+I: pybuild base:217: /usr/bin/python3 setup.py install --root /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv 
+running install
+running build
+running build_py
+running install_lib
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/__init__.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/__pycache__/__init__.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/__pycache__/action.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/__pycache__/config.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/__pycache__/uinput.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/__pycache__/exceptions.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/__pycache__/utils.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/__pycache__/device.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/__pycache__/backend.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/__main__.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/action.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/__init__.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/__pycache__/__init__.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/__pycache__/battery.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/__pycache__/binding.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/__pycache__/btsignal.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/__pycache__/dump.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/__pycache__/input.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/__pycache__/led.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/__pycache__/status.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/battery.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/binding.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/btsignal.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/dump.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/input.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/led.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/actions/status.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/backend.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/backends
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/backends/__init__.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/backends
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/backends/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/backends/__pycache__/__init__.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/backends/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/backends/__pycache__/bluetooth.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/backends/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/backends/__pycache__/hidraw.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/backends/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/backends/bluetooth.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/backends
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/backends/hidraw.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/backends
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/config.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/daemon.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/device.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/eventloop.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/exceptions.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/logger.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/packages
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/packages/__init__.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/packages
+creating /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/packages/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/packages/__pycache__/__init__.cpython-38.pyc -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/packages/__pycache__
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/packages/timerfd.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/packages
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/uinput.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv
+copying /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/.pybuild/cpython3_3.8_ds4drv/build/ds4drv/utils.py -> /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/__main__.py to __main__.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/action.py to action.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/battery.py to battery.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/binding.py to binding.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/btsignal.py to btsignal.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/dump.py to dump.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/input.py to input.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/led.py to led.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/actions/status.py to status.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/backend.py to backend.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/backends/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/backends/bluetooth.py to bluetooth.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/backends/hidraw.py to hidraw.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/config.py to config.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/daemon.py to daemon.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/device.py to device.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/eventloop.py to eventloop.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/exceptions.py to exceptions.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/logger.py to logger.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/packages/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/packages/timerfd.py to timerfd.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/uinput.py to uinput.cpython-38.pyc
+byte-compiling /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv/utils.py to utils.cpython-38.pyc
+running install_egg_info
+running egg_info
+creating ds4drv.egg-info
+writing ds4drv.egg-info/PKG-INFO
+writing dependency_links to ds4drv.egg-info/dependency_links.txt
+writing entry points to ds4drv.egg-info/entry_points.txt
+writing requirements to ds4drv.egg-info/requires.txt
+writing top-level names to ds4drv.egg-info/top_level.txt
+writing manifest file 'ds4drv.egg-info/SOURCES.txt'
+reading manifest file 'ds4drv.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+writing manifest file 'ds4drv.egg-info/SOURCES.txt'
+Copying ds4drv.egg-info to /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/lib/python3.8/dist-packages/ds4drv-0.5.1.egg-info
+Skipping SOURCES.txt
+running install_scripts
+Installing ds4drv script to /home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv/debian/ds4drv/usr/bin
+   dh_installdocs -O--buildsystem=pybuild
+	install -d debian/ds4drv/usr/share/doc/ds4drv
+	install -d debian/.debhelper/generated/ds4drv
+	cp --reflink=auto -a ./README.rst debian/ds4drv/usr/share/doc/ds4drv
+	chown -R 0:0 debian/ds4drv/usr/share/doc
+	chmod -R u\+rw,go=rX debian/ds4drv/usr/share/doc
+	install -p -m0644 debian/copyright debian/ds4drv/usr/share/doc/ds4drv/copyright
+   dh_installchangelogs -O--buildsystem=pybuild
+	install -p -m0644 debian/changelog debian/ds4drv/usr/share/doc/ds4drv/changelog.Debian
+	install -p -m0644 ./HISTORY.rst debian/ds4drv/usr/share/doc/ds4drv/changelog
+   dh_python3 -O--buildsystem=pybuild
+D: dh_python3 dh_python3:161: version: 4.20200315
+D: dh_python3 dh_python3:162: argv: ['/usr/bin/dh_python3', '-O--buildsystem=pybuild']
+D: dh_python3 dh_python3:163: options: {'guess_deps': True, 'skip_private': False, 'verbose': False, 'arch': None, 'package': None, 'no_package': None, 'compile_all': False, 'vrange': None, 'regexpr': None, 'accept_upstream_versions': False, 'depends': None, 'depends_section': None, 'recommends': None, 'recommends_section': None, 'suggests': None, 'suggests_section': None, 'requires': None, 'shebang': None, 'ignore_shebangs': False, 'clean_dbg_pkg': True, 'no_ext_rename': False, 'no_shebang_rewrite': False, 'O': '--buildsystem=pybuild'}
+D: dh_python3 dh_python3:164: args: []
+D: dh_python3 dh_python3:165: supported Python versions: 3.8 (default=3.8)
+D: dh_python3 debhelper:152: source=ds4drv, binary packages=['ds4drv']
+D: dh_python3 dh_python3:183: processing package ds4drv...
+D: dh_python3 fs:49: moving files from debian/ds4drv/usr/lib/python3.8/dist-packages to debian/ds4drv/usr/lib/python3/dist-packages/
+D: dh_python3 fs:260: package ds4drv details = {'requires.txt': {'debian/ds4drv/usr/lib/python3/dist-packages/ds4drv-0.5.1.egg-info/requires.txt'}, 'egg-info': set(), 'nsp.txt': set(), 'shebangs': {/usr/bin/python3}, 'public_vers': {Version('3')}, 'private_dirs': {}, 'compile': True, 'ext_vers': set(), 'ext_no_version': set()}
+D: dh_python3 depends:117: generating dependencies for package ds4drv
+D: dh_python3 pydist:137: trying to find dependency for evdev>=0.3.0 (python=None)
+D: dh_python3 pydist:137: trying to find dependency for pyudev>=0.16 (python=None)
+D: dh_python3 depends:275: D={'python3-evdev (>= 1.1)', 'python3:any', 'python3-pyudev (>= 0.20)', 'python3:any (>= 3.7~)'}; R=[]; S=[]; E=[], B=[]; RT=[]
+   dh_installinit -O--buildsystem=pybuild
+   dh_installsystemd -O--buildsystem=pybuild
+	install -d debian/ds4drv/lib/systemd/system
+	install -p -m0644 debian/ds4drv.service debian/ds4drv/lib/systemd/system/ds4drv.service
+	[META] Append autosnippet "postinst-systemd-enable" to postinst [debian/.debhelper/generated/ds4drv/postinst.service]
+	[META] Append autosnippet "postrm-systemd" to postrm [debian/ds4drv.postrm.debhelper]
+	[META] Append autosnippet "postinst-systemd-restart" to postinst [debian/.debhelper/generated/ds4drv/postinst.service]
+	[META] Append autosnippet "prerm-systemd-restart" to prerm [debian/.debhelper/generated/ds4drv/prerm.service]
+	[META] Prepend autosnippet "postrm-systemd-reload-only" to postrm [debian/ds4drv.postrm.debhelper.new]
+	mv debian/ds4drv.postrm.debhelper.new debian/ds4drv.postrm.debhelper
+   dh_perl -O--buildsystem=pybuild
+   dh_link -O--buildsystem=pybuild
+   dh_strip_nondeterminism -O--buildsystem=pybuild
+   dh_compress -O--buildsystem=pybuild
+	cd debian/ds4drv
+	chmod a-x usr/share/doc/ds4drv/README.rst usr/share/doc/ds4drv/changelog usr/share/doc/ds4drv/changelog.Debian
+	gzip -9nf usr/share/doc/ds4drv/README.rst usr/share/doc/ds4drv/changelog usr/share/doc/ds4drv/changelog.Debian
+	cd '/home/lpenz/zcloud/s3ql-carbonl/projs/github/debian-ds4drv'
+   dh_fixperms -O--buildsystem=pybuild
+	find debian/ds4drv -true -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/ds4drv ! -type l -a -true -a -true -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/ds4drv/usr/share/doc -type f -a -true -a ! -regex 'debian/ds4drv/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/ds4drv/usr/share/doc -type d -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0755
+	find debian/ds4drv -type f \( -name '*.so.*' -o -name '*.so' -o -name '*.la' -o -name '*.a' -o -name '*.js' -o -name '*.css' -o -name '*.scss' -o -name '*.sass' -o -name '*.jpeg' -o -name '*.jpg' -o -name '*.png' -o -name '*.gif' -o -name '*.cmxs' -o -name '*.node' \) -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/ds4drv/usr/bin -type f -a -true -a -true -print0 2>/dev/null | xargs -0r chmod a+x
+	find debian/ds4drv/usr/lib -type f -name '*.ali' -a -true -a -true -print0 2>/dev/null | xargs -0r chmod uga-w
+   dh_missing -O--buildsystem=pybuild
+   dh_installdeb -O--buildsystem=pybuild
+	install -d debian/ds4drv/DEBIAN
+	printf '#!/bin/sh\nset -e\n' > debian/ds4drv/DEBIAN/postinst
+	cat debian/ds4drv.postinst.debhelper debian/.debhelper/generated/ds4drv/postinst.service >> debian/ds4drv/DEBIAN/postinst
+	chmod 0755 -- debian/ds4drv/DEBIAN/postinst
+	chown 0:0 -- debian/ds4drv/DEBIAN/postinst
+	printf '#!/bin/sh\nset -e\n' > debian/ds4drv/DEBIAN/prerm
+	cat debian/.debhelper/generated/ds4drv/prerm.service debian/ds4drv.prerm.debhelper >> debian/ds4drv/DEBIAN/prerm
+	chmod 0755 -- debian/ds4drv/DEBIAN/prerm
+	chown 0:0 -- debian/ds4drv/DEBIAN/prerm
+	printf '#!/bin/sh\nset -e\n' > debian/ds4drv/DEBIAN/postrm
+	cat debian/ds4drv.postrm.debhelper >> debian/ds4drv/DEBIAN/postrm
+	chmod 0755 -- debian/ds4drv/DEBIAN/postrm
+	chown 0:0 -- debian/ds4drv/DEBIAN/postrm
+   dh_gencontrol -O--buildsystem=pybuild
+	echo misc:Depends= >> debian/ds4drv.substvars
+	echo misc:Pre-Depends= >> debian/ds4drv.substvars
+	dpkg-gencontrol -pds4drv -ldebian/changelog -Tdebian/ds4drv.substvars -Pdebian/ds4drv
+	chmod 0644 -- debian/ds4drv/DEBIAN/control
+	chown 0:0 -- debian/ds4drv/DEBIAN/control
+   dh_md5sums -O--buildsystem=pybuild
+	cd debian/ds4drv >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	chmod 0644 -- debian/ds4drv/DEBIAN/md5sums
+	chown 0:0 -- debian/ds4drv/DEBIAN/md5sums
+   dh_builddeb -O--buildsystem=pybuild
+	dpkg-deb --build debian/ds4drv ..
+dpkg-deb: building package 'ds4drv' in '../ds4drv_0.5.1-3_all.deb'.
+ dpkg-genbuildinfo
+Can't stat /usr/local/include: No such file or directory
+ at /usr/share/perl5/Dpkg/Vendor/Debian.pm line 469.
+ dpkg-genchanges  >../ds4drv_0.5.1-3_amd64.changes
+dpkg-genchanges: info: not including original source code in upload
+ dpkg-source -i -I --after-build .
+dpkg-source: info: using options from debian-ds4drv/debian/source/options: --extend-diff-ignore=^\.travis\.yml$
+dpkg-buildpackage: info: binary and diff upload (original source NOT included)
+Now running lintian ds4drv_0.5.1-3_amd64.changes ...
+W: ds4drv: binary-without-manpage usr/bin/ds4drv
+Finished running lintian.

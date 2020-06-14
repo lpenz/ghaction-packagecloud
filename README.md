@@ -1,3 +1,8 @@
+[![marketplace](https://img.shields.io/badge/marketplace-deploy--to--packagecloud--io-blue?logo=github)](https://github.com/marketplace/actions/deploy-to-packagecloud-io)
+[![CI](https://github.com/lpenz/ghaction-packagecloud/workflows/CI/badge.svg)](https://github.com/lpenz/ghaction-packagecloud/actions)
+[![github](https://img.shields.io/github/v/release/lpenz/ghaction-packagecloud?include_prereleases&label=release&logo=github)](https://github.com/lpenz/ghaction-packagecloud/releases)
+[![docker](https://img.shields.io/docker/v/lpenz/ghaction-packagecloud?label=release&logo=docker&sort=semver)](https://hub.docker.com/repository/docker/lpenz/ghaction-packagecloud)
+
 # ghaction-packagecloud
 
 **ghaction-packagecloud** is a simple github docker action that

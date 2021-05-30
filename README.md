@@ -43,7 +43,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - uses: docker://lpenz/ghaction-packagecloud:v0.1
         with:
           repository: lpenz/debian/stretch
@@ -73,7 +73,8 @@ the git repository.
 
 .deb files to push.
 
-If not specified, use all .deb files under the current directory.
+If not specified, use all .deb files under the current directory. If
+none are found, search in all subdirectories.
 
 
 ## Using in other environments

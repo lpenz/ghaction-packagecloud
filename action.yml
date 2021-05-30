@@ -12,10 +12,12 @@ inputs:
     required: true
   directory:
     description: 'cd to this directory; used if defined'
+    default: ''
   files:
     description: -<
       .deb files to upload. If not specified, all .deb files under the
-      current directory are uploaded.
+      current directory are uploaded; if none found, recurse into
+      subdirectories.
 runs:
   using: 'docker'
   image: 'Dockerfile'

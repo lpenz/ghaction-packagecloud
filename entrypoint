@@ -1,5 +1,7 @@
 #!/bin/bash
 
+shopt -s nullglob
+
 if [ -n "$INPUT_USER" ]; then
     user_tmp="$INPUT_USER"
 elif [ -n "$GITHUB_REPOSITORY" ]; then
@@ -13,8 +15,14 @@ repository=${INPUT_REPOSITORY?Please specify a repository}
 if [ -n "$INPUT_FILES" ]; then
     IFS=' ' read -r -a files <<< "$INPUT_FILES"
 else
-    readarray -d '' files < <(find . -type f -name '*.deb' -print0)
+    # Use all debs in current directory
+    files=(*.deb)
     if [ "${#files[@]}" -eq 0 ]; then
+        # If no debs found in current, dig deeper
+        readarray -d '' files < <(find . -type f -name '*.deb' -print0)
+    fi
+    if [ "${#files[@]}" -eq 0 ]; then
+        # Ok, time to give up
         echo No .deb files found >&2
         exit 1
     fi

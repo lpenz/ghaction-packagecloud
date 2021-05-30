@@ -5,4 +5,4 @@ RUN set -x -e; \
     gem install package_cloud
 
 ADD entrypoint /usr/local/bin/entrypoint
-ENTRYPOINT ["/usr/local/bin/entrypoint"]
+CMD ["/usr/local/bin/entrypoint"]

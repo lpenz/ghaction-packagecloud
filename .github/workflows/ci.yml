@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: docker://lpenz/omnilint:latest
+      - uses: docker://lpenz/omnilint:v0.2
   dockerhub:
     needs: [ build, omnilint ]
     runs-on: ubuntu-latest

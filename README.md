@@ -36,20 +36,23 @@ to *Settings*, *Secrets* - and then pass it using the
 Example workflow file:
 
 ```yml
-on:
-  push:
-    tags: *
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - <build debian package>
       - uses: docker://lpenz/ghaction-packagecloud:v0.2
         with:
           repository: lpenz/debian/stretch
         env:
           PACKAGECLOUD_TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
 ```
+
+For a more complete example, here are some github repositories that use this action:
+[execpermfix](https://github.com/lpenz/execpermfix),
+[ogle](https://github.com/lpenz/ogle),
+[ftpsmartsync](https://github.com/lpenz/ftpsmartsync).
 
 
 ## Inputs

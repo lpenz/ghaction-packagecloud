@@ -17,6 +17,10 @@ if [ -n "$INPUT_FILES" ]; then
 else
     # Use all debs in current directory
     files=(*.deb)
+    # Get .dsc if requested
+    if [ "$INPUT_UPLOAD_DSC" = "true" ]; then
+        files+=(*.dsc)
+    fi
     if [ "${#files[@]}" -eq 0 ]; then
         # If no debs found in current, dig deeper
         readarray -d '' files < <(find . -type f -name '*.deb' -print0)

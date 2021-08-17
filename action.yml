@@ -18,6 +18,9 @@ inputs:
       .deb files to upload. If not specified, all .deb files under the
       current directory are uploaded; if none found, recurse into
       subdirectories.
+  upload_dsc:
+    description: 'upload *.dsc as well as .deb files'
+    default: false
 runs:
   using: 'docker'
   image: 'Dockerfile'

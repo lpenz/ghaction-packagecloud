@@ -13,6 +13,8 @@ fi
 user=${user_tmp?Please specify a user}
 repository=${INPUT_REPOSITORY?Please specify a repository}
 
+[ -n "$INPUT_DIRECTORY" ] && cd "$INPUT_DIRECTORY"
+
 # "files" array:
 if [ -n "$INPUT_FILES" ]; then
     read -r -a input_files <<<"$INPUT_FILES"
@@ -37,13 +39,6 @@ else
         exit 1
     fi
 fi
-
-dircmd=(:)
-if [ -n "$INPUT_DIRECTORY" ]; then
-    dircmd=(cd "$INPUT_DIRECTORY")
-fi
-
-"${dircmd[@]}"
 
 # Upload each file separately to support multiple file types
 for file in "${files[@]}"; do

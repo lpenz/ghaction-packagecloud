@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x -e -o pipefail
+
 shopt -s nullglob
 
 if [ -n "$INPUT_USER" ]; then
@@ -40,8 +42,6 @@ dircmd=(:)
 if [ -n "$INPUT_DIRECTORY" ]; then
     dircmd=(cd "$INPUT_DIRECTORY")
 fi
-
-set -x -e -o pipefail
 
 "${dircmd[@]}"
 

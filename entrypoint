@@ -19,13 +19,13 @@ repository=${INPUT_REPOSITORY?Please specify a repository}
 if [ -n "$INPUT_FILES" ]; then
     # Primitive whitespace splitting
     INPUT_FILES=$(echo "$INPUT_FILES" | tr '\n' ' ' | tr '\t' ' ' | tr -s ' ')
-    IFS=" " read -r -a input_files <<<"$INPUT_FILES"
-    echo "${input_files[@]}"
+    IFS=" " read -r -a input_file_patterns <<<"$INPUT_FILES"
+    echo "${input_file_patterns[@]}"
 
     # Parse pattern matching in input files
     files=()
-    for input_file in "${input_files[@]}"; do
-        readarray -d '' _files < <(find $(dirname ${input_file}) -type f -name $(basename ${input_file}) -print0)
+    for input_file_pattern in "${input_file_patterns[@]}"; do
+        readarray -d '' _files < <(find $(dirname "${input_file_pattern}") -type f -name $(basename "${input_file_pattern}") -print0)
         echo "${_files[@]}"
         files+=("${_files[@]}")
     done

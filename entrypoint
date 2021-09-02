@@ -22,9 +22,8 @@ if [ -n "$INPUT_FILES" ]; then
     # Parse pattern matching in input files
     files=()
     for input_file in "${input_files[@]}"; do
-        for line in $(compgen -G "${input_file}"); do
-            files+=(${line})
-        done
+        readarray -d '' _files < <(find $(dirname ${input_file}) -type f -name $(basename ${input_file}) -print0)
+        files+=("${_files[@]}")
     done
 else
     # Use all debs in current directory

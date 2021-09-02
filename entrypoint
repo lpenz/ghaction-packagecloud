@@ -17,12 +17,15 @@ repository=${INPUT_REPOSITORY?Please specify a repository}
 
 # "files" array:
 if [ -n "$INPUT_FILES" ]; then
+    echo "$INPUT_FILES"
     read -r -a input_files <<<"$INPUT_FILES"
+    echo "${input_files[@]}"
 
     # Parse pattern matching in input files
     files=()
     for input_file in "${input_files[@]}"; do
         readarray -d '' _files < <(find $(dirname ${input_file}) -type f -name $(basename ${input_file}) -print0)
+        echo "${_files[@]}"
         files+=("${_files[@]}")
     done
 else
@@ -31,6 +34,7 @@ else
     if [ "${#files[@]}" -eq 0 ]; then
         # If no debs found in current, dig deeper
         readarray -d '' files < <(find . -type f -name '*.deb' -print0)
+        echo "${files[@]}"
     fi
     if [ "${#files[@]}" -eq 0 ]; then
         # Ok, time to give up

@@ -25,7 +25,7 @@ if [ -n "$INPUT_FILES" ]; then
     # Parse pattern matching in input files
     files=()
     for input_file_pattern in "${input_file_patterns[@]}"; do
-        readarray -d '' _files < <(find $(dirname "${input_file_pattern}") -type f -name $(basename "${input_file_pattern}") -print0)
+        readarray -d '' _files < <(find $(dirname "${input_file_pattern}") -type f -name "$(basename "${input_file_pattern}")" -print0)
         echo "${_files[@]}"
         files+=("${_files[@]}")
     done

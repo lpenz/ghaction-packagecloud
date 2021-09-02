@@ -17,9 +17,11 @@ repository=${INPUT_REPOSITORY?Please specify a repository}
 
 # "files" array:
 if [ -n "$INPUT_FILES" ]; then
+    read -r -a input_files <<<"$INPUT_FILES"
+
     # Parse pattern matching in input files
     files=()
-    for input_file in "${INPUT_FILES[@]}"; do
+    for input_file in "${input_files[@]}"; do
         for line in $(compgen -G "${input_file}"); do
             files+=(${line})
         done

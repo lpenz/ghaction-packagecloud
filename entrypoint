@@ -33,7 +33,7 @@ if [ -n "$INPUT_DIRECTORY" ]; then
     dircmd=( cd "$INPUT_DIRECTORY" )
 fi
 
-set -x -e -o pipefail
+set -e -x -o pipefail
 
 "${dircmd[@]}"
 

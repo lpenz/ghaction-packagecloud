@@ -1,6 +1,6 @@
 FROM ruby:2.7-alpine
 
-RUN set -x -e; \
+RUN set -e -x; \
     apk add --update --no-cache bash make g++; \
     gem install package_cloud
 

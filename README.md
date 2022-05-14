@@ -42,7 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - <build debian package>
-      - uses: docker://lpenz/ghaction-packagecloud:v0.2
+      - uses: docker://lpenz/ghaction-packagecloud:0.4
         with:
           repository: lpenz/debian/stretch
         env:
@@ -88,7 +88,7 @@ download the image from
 [docker hub](https://hub.docker.com/r/lpenz/ghaction-packagecloud):
 
 ```sh
-docker pull lpenz/ghaction-packagecloud:v0.2
+docker pull lpenz/ghaction-packagecloud:0.4
 ```
 
 Then, run a container in the project's directory, for instance:
@@ -97,7 +97,7 @@ Then, run a container in the project's directory, for instance:
 docker run --rm -t -u "$UID" -w "$PWD" -v "${PWD}:${PWD}" \
   -e INPUT_REPOSITORY=lpenz/debian/stretch \
   -e PACKAGECLOUD_TOKEN \
-  lpenz/ghaction-packagecloud:v0.2
+  lpenz/ghaction-packagecloud:0.4
 ```
 
 It's worth pointing out that action parameters are passed as
@@ -110,10 +110,10 @@ The following `.travis.yml` runs the same thing in travis-ci:
 language: generic
 jobs:
   include:
-    - install: docker pull lpenz/ghaction-packagecloud:v0.2
+    - install: docker pull lpenz/ghaction-packagecloud:0.4
     - script: -<
         docker run --rm -t -u "$UID" -w "$PWD" -v "${PWD}:${PWD}"
           -e INPUT_REPOSITORY=raspbian/debian/stretch
           -e PACKAGECLOUD_TOKEN
-          lpenz/ghaction-packagecloud:v0.2
+          lpenz/ghaction-packagecloud:0.4
 ```

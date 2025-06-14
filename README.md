@@ -6,7 +6,8 @@
 # ghaction-packagecloud
 
 **ghaction-packagecloud** is a simple github docker action that
-deploys debian packages to [packagecloud.io](https://packagecloud.io).
+deploys debian or RPM packages to
+[packagecloud.io](https://packagecloud.io).
 
 
 ## Usage
@@ -23,7 +24,7 @@ package_cloud push <user>/<repository> <files>
   the OS and version, example: `reponame/ubuntu/precise`. That's
   better documented in https://packagecloud.io/docs#push_pkg
 - `files` has the files to upload. Also optional - if not defined, the
-  action uses all `.deb` files under the current directory.
+  action uses all `.deb` and `.rpm` files under the current directory.
 
 Besides these parameters, the `package_cloud` script also needs the
 API Token to update the repository. You can get that from
@@ -41,8 +42,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - <build debian package>
-      - uses: docker://lpenz/ghaction-packagecloud:0.4
+      - <build debian/rpm package>
+      - uses: docker://lpenz/ghaction-packagecloud:0.5
         with:
           repository: lpenz/debian/stretch
         env:
@@ -69,15 +70,15 @@ packagecloud.io repository. Required.
 
 Enter this directory before pushing. Optional.
 
-Mostly useful when the debian package is created in a subdirectory of
-the git repository.
+Mostly useful when the debian/RPM package is created in a subdirectory
+of the git repository.
 
 ### `files`
 
-.deb files to push.
+.deb and .rpm files to push.
 
-If not specified, use all .deb files under the current directory. If
-none are found, search in all subdirectories.
+If not specified, use all .deb and .rpm files under the current
+directory. If none are found, search in all subdirectories.
 
 
 ## Using in other environments
@@ -88,7 +89,7 @@ download the image from
 [docker hub](https://hub.docker.com/r/lpenz/ghaction-packagecloud):
 
 ```sh
-docker pull lpenz/ghaction-packagecloud:0.4
+docker pull lpenz/ghaction-packagecloud:0.5
 ```
 
 Then, run a container in the project's directory, for instance:
@@ -97,7 +98,7 @@ Then, run a container in the project's directory, for instance:
 docker run --rm -t -u "$UID" -w "$PWD" -v "${PWD}:${PWD}" \
   -e INPUT_REPOSITORY=lpenz/debian/stretch \
   -e PACKAGECLOUD_TOKEN \
-  lpenz/ghaction-packagecloud:0.4
+  lpenz/ghaction-packagecloud:0.5
 ```
 
 It's worth pointing out that action parameters are passed as
@@ -110,10 +111,10 @@ The following `.travis.yml` runs the same thing in travis-ci:
 language: generic
 jobs:
   include:
-    - install: docker pull lpenz/ghaction-packagecloud:0.4
+    - install: docker pull lpenz/ghaction-packagecloud:0.5
     - script: -<
         docker run --rm -t -u "$UID" -w "$PWD" -v "${PWD}:${PWD}"
           -e INPUT_REPOSITORY=raspbian/debian/stretch
           -e PACKAGECLOUD_TOKEN
-          lpenz/ghaction-packagecloud:0.4
+          lpenz/ghaction-packagecloud:0.5
 ```

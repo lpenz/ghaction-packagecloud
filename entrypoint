@@ -13,24 +13,20 @@ repository=${INPUT_REPOSITORY?Please specify a repository}
 
 # "files" array:
 if [ -n "$INPUT_FILES" ]; then
-    IFS=' ' read -r -a files <<< "$INPUT_FILES"
+    IFS=' ' read -r -a files <<<"$INPUT_FILES"
 else
-    # Use all debs in current directory
-    files=(*.deb)
-    if [ "${#files[@]}" -eq 0 ]; then
-        # If no debs found in current, dig deeper
-        readarray -d '' files < <(find . -type f -name '*.deb' -print0)
-    fi
+    # Use all debs and rpms under current directory
+    readarray -d '' files < <(find . -type f \( -name '*.deb' -o -name '*.rpm' \) -print0)
     if [ "${#files[@]}" -eq 0 ]; then
         # Ok, time to give up
-        echo No .deb files found >&2
+        echo No .deb nor .rpm files found >&2
         exit 1
     fi
 fi
 
-dircmd=( : )
+dircmd=(:)
 if [ -n "$INPUT_DIRECTORY" ]; then
-    dircmd=( cd "$INPUT_DIRECTORY" )
+    dircmd=(cd "$INPUT_DIRECTORY")
 fi
 
 set -e -x -o pipefail

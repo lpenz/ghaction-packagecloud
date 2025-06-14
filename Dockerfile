@@ -1,4 +1,4 @@
-FROM ruby:2.7-alpine
+FROM docker.io/ruby:2.7-alpine
 
 RUN set -e -x; \
     apk add --update --no-cache bash make g++; \

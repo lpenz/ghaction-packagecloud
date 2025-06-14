@@ -1,6 +1,8 @@
 ---
 name: CI
-on: [ push, pull_request ]
+on:  # yamllint disable-line rule:truthy
+  - push
+  - pull_request
 jobs:
   omnilint:
     runs-on: ubuntu-latest
@@ -13,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4.2.2
       - run: docker build .
   dockerhub:
-    needs: [ build, omnilint ]
+    needs: [build, omnilint]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
@@ -29,5 +31,5 @@ jobs:
         if: steps.version.outputs.version_tagged != ''
         with:
           push: true
-          tags: ${{ github.repository }}:${{ steps.version.outputs.version_tagged }}
-
+          tags: |
+            ${{ github.repository }}:${{ steps.version.outputs.version_tagged }}

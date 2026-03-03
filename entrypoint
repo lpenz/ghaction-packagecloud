@@ -31,4 +31,6 @@ fi
 
 set -e -x -o pipefail
 
-package_cloud push "${user}/$repository" "${files[@]}"
+for file in "${files[@]}"; do
+    package_cloud push "${user}/$repository" "$file"
+done

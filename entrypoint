@@ -11,6 +11,11 @@ fi
 user=${user_tmp?Please specify a user}
 repository=${INPUT_REPOSITORY?Please specify a repository}
 
+if [ -n "$INPUT_DIRECTORY" ]; then
+    echo + cd "$INPUT_DIRECTORY"
+    cd "$INPUT_DIRECTORY"
+fi
+
 # "files" array:
 if [ -n "$INPUT_FILES" ]; then
     IFS=' ' read -r -a files <<<"$INPUT_FILES"
@@ -24,13 +29,6 @@ else
     fi
 fi
 
-dircmd=(:)
-if [ -n "$INPUT_DIRECTORY" ]; then
-    dircmd=(cd "$INPUT_DIRECTORY")
-fi
-
 set -e -x -o pipefail
-
-"${dircmd[@]}"
 
 package_cloud push "${user}/$repository" "${files[@]}"
